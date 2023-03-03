@@ -14,12 +14,12 @@ const createTask = async (text) => {
 };
 
 const deleteOneTask = async (id) => {
-  const deleteInfo = await Task.deleteOne({ _id : id });
+  const deleteInfo = await Task.deleteOne({ _id: id });
 
   return deleteInfo;
 }
 
-const deleteTasks = async (id) => {
+const deleteTasks = async () => {
   const deleteInfo = await Task.deleteMany();
 
   return deleteInfo;
@@ -36,7 +36,7 @@ const editOneTask = async (id, text) => {
   return updatedTask;
 }
 
-const changeIsCheckOneTask = async (id, isCheck) => {
+const editIsCheckOneTask = async (id, isCheck) => {
   const updatedTask = await Task.findByIdAndUpdate(
     { _id: id },
     { isCheck },
@@ -52,5 +52,5 @@ module.exports = {
   deleteOneTask,
   deleteTasks,
   editOneTask,
-  changeIsCheckOneTask
+  editIsCheckOneTask
 }

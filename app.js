@@ -17,10 +17,10 @@ const loadApp = async () => {
     });
     
     app.listen(PORT, () => {
-      console.log("Example app listening on port 8000");
+      console.log(`Example app listening on port ${PORT}`);
     });
   } catch (error) {
-    console.log(error);
+    console.error(error);
     process.exit(1);
   }
 }
