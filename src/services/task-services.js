@@ -2,6 +2,7 @@ const Task = require("../models/task");
 
 const getTasks = async () => {
   const tasks = await Task.find();
+  
   return tasks;
 };
 
@@ -13,34 +14,36 @@ const createTask = async (text) => {
 };
 
 const deleteOneTask = async (id) => {
-  const deleteInfo = await Task.deleteOne({ '_id' : id });
+  const deleteInfo = await Task.deleteOne({ _id : id });
 
-  return deleteInfo
+  return deleteInfo;
 }
 
 const deleteTasks = async (id) => {
   const deleteInfo = await Task.deleteMany();
 
-  return deleteInfo
+  return deleteInfo;
 }
 
 
 const editOneTask = async (id, text) => {
-  const editInfo = await Task.findByIdAndUpdate(
+  const updatedTask = await Task.findByIdAndUpdate(
     { _id: id },
     { text },
     { new: true }
   );
-  return editInfo;
+  
+  return updatedTask;
 }
 
-const changeStatusOneTask = async (id, isCheck) => {
-  const editInfo = await Task.findByIdAndUpdate(
+const changeIsCheckOneTask = async (id, isCheck) => {
+  const updatedTask = await Task.findByIdAndUpdate(
     { _id: id },
     { isCheck },
     { new: true }
   );
-  return editInfo;
+
+  return updatedTask;
 }
 
 module.exports = {
@@ -49,5 +52,5 @@ module.exports = {
   deleteOneTask,
   deleteTasks,
   editOneTask,
-  changeStatusOneTask
+  changeIsCheckOneTask
 }

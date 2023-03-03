@@ -4,7 +4,7 @@ const {
   deleteOneTask,
   deleteTasks,
   editOneTask,
-  changeStatusOneTask  
+  changeIsCheckOneTask  
 } = require("../services/task-services");
 
 const deleteTask = async (req, res) => {
@@ -20,16 +20,13 @@ const deleteTask = async (req, res) => {
 
 const deleteAllTasks = async (req, res) => {
   try {
-    const deleteAllInfo = await deleteTasks();
+    const deleteInfo = await deleteTasks();
 
-    res.status(200).send(deleteAllInfo);
+    res.status(200).send(deleteInfo);
   } catch (error) {
     res.status(400).send("Failed to delete all tasks");
   }
 }
-
-
-
 
 const getAllTasks = async (req, res) => {
   try {
@@ -44,36 +41,35 @@ const getAllTasks = async (req, res) => {
 const createOneTask = async (req, res) => {
   try {
     const { text } = req.body;
-    const task = await createTask(text);
 
+    const task = await createTask(text);
     res.status(200).send(task);
   } catch (error) {
     res.status(400).send("Failed to create tasks");
   }
 };
 
-
-
 const editTextTask = async (req, res) => {
   try {
-    const id   = req.params.id;
+    const id = req.params.id;
     const text = req.body.text;
-    const editInfo = await editOneTask(id, text);
 
-    res.status(200).send(editInfo);
+    const updatedTask = await editOneTask(id, text);
+    res.status(200).send(updatedTask);
   } catch (error) {
     res.status(400).send("Failed to edit text");
   }
 }
-const changeStatusTask = async (req, res) => {
+
+const changeisCheckTask = async (req, res) => {
   try {
     const { id }   = req.params;
     const { isCheck } = req.body;
-    const editInfo = await changeStatusOneTask(id, isCheck);
+    const updatedTask = await changeIsCheckOneTask(id, isCheck);
 
-    res.status(200).send(editInfo);
+    res.status(200).send(updatedTask);
   } catch (error) {
-    res.status(400).send("Failed to edit text");
+    res.status(400).send("Failed to edit status");
   }
 }
 
@@ -83,5 +79,5 @@ module.exports = {
   deleteTask,
   deleteAllTasks,
   editTextTask,
-  changeStatusTask
+  changeisCheckTask
 }

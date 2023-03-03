@@ -1,18 +1,19 @@
 const express = require("express");
 const router = express.Router();
+const { validationText } = require('../middlwares/task-validation');
 const { 
   getAllTasks,
   createOneTask,
   deleteTask,
   deleteAllTasks,
   editTextTask,
-  changeStatusTask
+  changeisCheckTask
 } = require('../controllers/task-controllers');
 
 router.get('/tasks', getAllTasks);
 router.delete('/tasks', deleteAllTasks);
-router.post('/tasks', createOneTask);
+router.post('/tasks', validationText, createOneTask);
 router.delete('/tasks/:id', deleteTask);
-router.patch('/tasks/text/:id', editTextTask);
-router.patch('/tasks/status/:id', changeStatusTask);
+router.patch('/tasks/text/:id', validationText, editTextTask);
+router.patch('/tasks/status/:id', changeisCheckTask);
 module.exports = router;
