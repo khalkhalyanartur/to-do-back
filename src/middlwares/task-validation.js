@@ -1,11 +1,12 @@
 const { check } = require("express-validator");
-const { validatorResult } = require("./validation-result")
+const { validatorResult } = require("./validation-result");
+
 const validationText = [
   check("text")
-  .isString()
-  .trim()
-  .notEmpty(),
-  validatorResult
+    .isString()
+    .trim()
+    .notEmpty(),
+    validatorResult
 ];
 
 module.exports = {

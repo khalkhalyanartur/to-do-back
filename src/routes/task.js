@@ -15,5 +15,5 @@ router.delete('/tasks', deleteAllTasks);
 router.post('/tasks', validationText, createOneTask);
 router.delete('/tasks/:id', deleteTask);
 router.patch('/tasks/text/:id', validationText, editTextTask);
-router.patch('/tasks/status/:id', editIsCheckTask);
+router.patch('/tasks/checkbox/:id', editIsCheckTask);
 module.exports = router;

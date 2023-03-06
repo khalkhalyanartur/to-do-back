@@ -43,6 +43,7 @@ const createOneTask = async (req, res) => {
     const { text } = req.body;
 
     const task = await createTask(text);
+    
     res.status(200).send(task);
   } catch (error) {
     res.status(400).send("Failed to create tasks");
