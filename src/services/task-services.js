@@ -36,7 +36,7 @@ const editOneTask = async (id, text) => {
   return updatedTask;
 }
 
-const editIsCheckOneTask = async (id, isCheck) => {
+const editCheckboxOneTask = async (id, isCheck) => {
   const updatedTask = await Task.findByIdAndUpdate(
     { _id: id },
     { isCheck },
@@ -52,5 +52,5 @@ module.exports = {
   deleteOneTask,
   deleteTasks,
   editOneTask,
-  editIsCheckOneTask
+  editCheckboxOneTask
 }

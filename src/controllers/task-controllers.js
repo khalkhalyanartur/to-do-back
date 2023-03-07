@@ -4,7 +4,7 @@ const {
   deleteOneTask,
   deleteTasks,
   editOneTask,
-  editIsCheckOneTask  
+  editCheckboxOneTask  
 } = require("../services/task-services");
 
 const deleteTask = async (req, res) => {
@@ -63,12 +63,12 @@ const editTextTask = async (req, res) => {
   }
 }
 
-const editIsCheckTask = async (req, res) => {
+const editCheckboxTask = async (req, res) => {
   try {
     const { id }   = req.params;
     const { isCheck } = req.body;
 
-    const updatedTask = await editIsCheckOneTask(id, isCheck);
+    const updatedTask = await editCheckboxOneTask(id, isCheck);
 
     res.status(200).send(updatedTask);
   } catch (error) {
@@ -82,5 +82,5 @@ module.exports = {
   deleteTask,
   deleteAllTasks,
   editTextTask,
-  editIsCheckTask
+  editCheckboxTask
 }
